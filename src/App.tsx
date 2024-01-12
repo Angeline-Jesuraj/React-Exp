@@ -4,6 +4,7 @@ import './App.css';
 import Student from './Student';
 import StudentEg from './StudentEg';
 import Studentfunc from './Studentfunc';
+import AxiosEg from './AxiosEg';
 
 type StudenetState = {
   name: string;
@@ -39,6 +40,7 @@ class App extends Component<{}, StudentReport> {
         < */}
         <StudentEg/>
         <Studentfunc/>
+        <AxiosEg/>
       </div>
 
     );
