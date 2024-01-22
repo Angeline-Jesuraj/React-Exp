@@ -1,52 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import axios, { AxiosResponse, AxiosError } from 'axios';
-
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+import axios from 'axios';
 
 const AxiosEg: React.FC = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response: AxiosResponse<Post[]> = await axios.get(
-          'https://jsonplaceholder.typicode.com/posts'
-        );
-        setPosts(response.data);
+        const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
+
+        setData(response.data);
       } catch (error) {
-        const axiosError = error as AxiosError;
-        console.error('Error:', axiosError.message);
+        setError( 'An error occurred');
       } finally {
         setLoading(false);
       }
     };
 
     fetchData();
-  }, []);
+  }, []); 
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <div>
-          <h1>Posts from JSONPlaceholder</h1>
-          <ul>
-            {posts.map((post) => (
-              <li key={post.id}>
-                <h3>{post.title}</h3>
-                <p>{post.body}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <h1>Axios Example</h1>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
 };
