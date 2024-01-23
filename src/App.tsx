@@ -7,6 +7,11 @@ import Studentfunc from './components/Studentfunc';
 import AxiosEg from './components/AxiosEg';
 import { BrowserRouter, Routes, Link ,Route} from 'react-router-dom';
 import Topic from './Topic';
+import ReduxEg from './components/redux/ReduxEg';
+import ReduxExample from './components/redux/ReduxExample';
+import { Provider } from 'react-redux';
+import store from './store';
+import Header from './components/redux/Header';
 type StudenetState = {
   name: string;
   age: number;
@@ -43,7 +48,9 @@ class App extends Component<{}, StudentReport> {
       //   <Studentfunc/>
       //   <AxiosEg/>
       // </div>
+      <Provider store ={store}>
  <BrowserRouter>
+ <Header/>
    <nav>
    <Link to="/">Home</Link>
     <Link to="/topics">Topics</Link>
@@ -53,8 +60,11 @@ class App extends Component<{}, StudentReport> {
           <Route path="/studenteg" element={<StudentEg />} />
           <Route path="/studentfunc" element={<Studentfunc />} />
           <Route path="/axioseg" element={<AxiosEg />} />
+          <Route path="/reduxeg" element={<ReduxEg />} />
+          <Route path="/reducexample" element={<ReduxExample/>}/>
    </Routes>
  </BrowserRouter>
+ </Provider>
     );
   }
 }

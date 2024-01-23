@@ -7,6 +7,8 @@ const Topic: React.FC = () => {
     <Link to="/studenteg">StudentEgClassComp</Link>
     <Link to="/studentfunc">StudentegFuncComp</Link>
     <Link to="/axioseg">AxiosExample</Link>
+    <Link to="/reduxeg">ReduxExample</Link>
+    <Link to ="/reducexample">ReduxSaga</Link>
     </nav>
   );
 };

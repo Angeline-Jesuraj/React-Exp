@@ -2,7 +2,6 @@ import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 import AxiosEg from './AxiosEg';
 
-// Mock Axios to simulate the HTTP request
 jest.mock('axios');
 
 describe('AxiosEg Component', () => {

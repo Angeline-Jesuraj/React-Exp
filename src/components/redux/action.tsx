@@ -2,19 +2,18 @@ import { ADD_TO_CART, REMOVE_TO_CART, EMPTY_TO_CART } from "./constant";
 
 interface AddToCartAction {
   type: typeof ADD_TO_CART;
-  data: any; // Replace 'any' with the specific type of your data
+  data: any; // Adjust the type according to your data structure
 }
 
 interface RemoveToCartAction {
   type: typeof REMOVE_TO_CART;
-  data: any; // Replace 'any' with the specific type of your data
+  data: any; // Adjust the type according to your data structure
 }
 
 interface EmptyToCartAction {
   type: typeof EMPTY_TO_CART;
 }
 
-// Action Creators
 export const addToCart = (data: any): AddToCartAction => {
   console.warn("action is called", data);
   return {
@@ -37,6 +36,4 @@ export const emptyToCart = (): EmptyToCartAction => {
     type: EMPTY_TO_CART,
   };
 };
-
-// Export action types for reducers to use
-export type CartActionTypes = AddToCartAction | RemoveToCartAction | EmptyToCartAction;
+ export type CartActionTypes = AddToCartAction | RemoveToCartAction | EmptyToCartAction;
